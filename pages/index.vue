@@ -591,19 +591,19 @@ const onBuild = async () => {
         <div class="relative z-10">
 
             <header
-                class="mb-4 flex flex-col gap-3 rounded-2xl border border-slate-700/80 bg-slate-900/80 p-4 shadow-xl lg:flex-row lg:items-start lg:justify-between">
+                class="mb-4 flex flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-900/90 p-4 shadow-xl lg:flex-row lg:items-start lg:justify-between">
                 <div class="grid gap-2">
                     <div class="flex items-center gap-2 text-2xl leading-none">
+                        <n-icon name="i-lucide-sparkles" class="text-slate-200" />
                         <h1 class="text-2xl font-black">NXTheme Builder</h1>
                     </div>
                     <p class="text-sm text-slate-300">
-                        Build Nintendo Switch <code class="rounded border border-slate-700 bg-slate-800 px-1.5 py-0.5">.nxtheme</code>
-                        files locally.
+                        Build Nintendo Switch <code class="rounded border border-slate-800 bg-slate-900/60 px-1.5 py-0.5 font-mono text-xs">.nxtheme</code> files locally.
                     </p>
                 </div>
                 <div class="flex flex-wrap items-center content-start gap-2 self-start">
                   <a
-                      class="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-slate-900 px-3 py-2 text-sm font-semibold text-slate-100"
+                      class="inline-flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-950/40 px-3 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-950/70 hover:text-white transition-all duration-200"
                       href="https://github.com/ThemezerNX/nxtheme-editor"
                       target="_blank"
                   >
@@ -611,7 +611,7 @@ const onBuild = async () => {
                     <span>Source code</span>
                   </a>
                     <a
-                        class="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-slate-900 px-3 py-2 text-sm font-semibold text-slate-100"
+                        class="inline-flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-950/40 px-3 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-950/70 hover:text-white transition-all duration-200"
                         href="https://themezer.net"
                         target="_blank"
                         rel="noreferrer"
@@ -620,7 +620,7 @@ const onBuild = async () => {
                         <span>Themezer</span>
                     </a>
                     <a
-                        class="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-slate-900 px-3 py-2 text-sm font-semibold text-slate-100"
+                        class="inline-flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-950/40 px-3 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-950/70 hover:text-white transition-all duration-200"
                         href="https://hb-app.store/switch/NXthemes_Installer"
                         target="_blank"
                     >
@@ -631,7 +631,7 @@ const onBuild = async () => {
             </header>
 
             <section
-                class="mb-4 grid gap-3 rounded-2xl border border-slate-700/80 bg-slate-900/80 p-4 shadow-xl md:grid-cols-2">
+                class="mb-4 grid gap-3 rounded-2xl border border-slate-800 bg-slate-900/90 p-4 shadow-xl md:grid-cols-2">
                 <label class="grid gap-1 text-sm">
         <span class="flex items-center justify-between gap-2">
           <span>Theme name</span>
@@ -644,7 +644,7 @@ const onBuild = async () => {
                         required
                         @blur="nameInputTouched = true"
                     />
-                    <p v-if="nameInputTouched && !form.name.trim()" class="text-xs text-red-300">Theme name is required</p>
+                    <p v-if="nameInputTouched && !form.name.trim()" class="text-xs text-red-400 mt-1">Theme name is required</p>
                 </label>
                 <label class="grid gap-1 text-sm">
         <span class="flex items-center justify-between gap-2">
@@ -658,20 +658,20 @@ const onBuild = async () => {
                         required
                         @blur="authorInputTouched = true"
                     />
-                    <p v-if="authorInputTouched && !form.author.trim()" class="text-xs text-red-300">Author is required</p>
+                    <p v-if="authorInputTouched && !form.author.trim()" class="text-xs text-red-400 mt-1">Author is required</p>
                 </label>
             </section>
 
-            <section class="mb-4 grid gap-3 rounded-2xl border border-slate-700/80 bg-slate-900/80 p-4 shadow-xl">
+            <section class="mb-4 grid gap-3 rounded-2xl border border-slate-800 bg-slate-900/90 p-4 shadow-xl">
                 <h2 class="text-lg font-semibold">Target</h2>
                 <n-tabs v-model="form.target">
                     <n-tabs-list
-                        class="!grid !h-auto !w-full !gap-1 !rounded-xl !border !border-slate-700 !bg-slate-900/70 !p-1 sm:!grid-cols-2 lg:!grid-cols-4 xl:!grid-cols-7">
+                        class="!grid !h-auto !w-full !gap-1 !rounded-xl !border !border-slate-850 !bg-slate-950/60 !p-1 sm:!grid-cols-2 lg:!grid-cols-4 xl:!grid-cols-7">
                         <n-tabs-trigger
                             v-for="target in SWITCH_TARGETS"
                             :key="target"
                             :value="target"
-                            class="!h-9 !min-w-0 !justify-center !gap-1.5 !rounded-lg !border-0 !bg-transparent !px-2 !py-1 !text-xs !text-slate-200 !shadow-none !ring-0 hover:!bg-slate-800/70 data-[state=active]:!bg-primary/20 data-[state=active]:!text-primary-200 sm:!text-sm"
+                            class="!h-9 !min-w-0 !justify-center !gap-1.5 !rounded-lg !border-0 !bg-transparent !px-2 !py-1 !text-xs !text-slate-300 !shadow-none !ring-0 hover:!bg-slate-800/50 data-[state=active]:!bg-primary/25 data-[state=active]:!text-primary-200 sm:!text-sm"
                         >
                             <span :class="[TARGET_LABELS[target].icon, 'shrink-0 text-sm leading-none']" />
                             <span class="min-w-0 truncate font-semibold">{{ TARGET_LABELS[target].title }}</span>
@@ -681,13 +681,13 @@ const onBuild = async () => {
             </section>
 
             <section class="mb-4 grid items-stretch gap-3 lg:grid-cols-[minmax(0,1.7fr)_auto_minmax(320px,1fr)]">
-                <article class="grid gap-3 rounded-2xl border border-slate-700/80 bg-slate-900/80 p-4 shadow-xl">
+                <article class="grid gap-3 rounded-2xl border border-slate-800 bg-slate-900/90 p-4 shadow-xl">
                     <h2 class="text-lg font-semibold">Background</h2>
                     <div v-if="backgroundAssetKey" class="grid gap-2">
-                        <span class="text-xs text-slate-400">{{ NXTHEME_ASSET_FILENAMES[backgroundAssetKey] }}</span>
+                        <span class="text-xs text-slate-400 font-mono">{{ NXTHEME_ASSET_FILENAMES[backgroundAssetKey] }}</span>
                         <div
-                            class="group grid aspect-video max-w-[720px] cursor-pointer place-items-center overflow-hidden rounded-xl border border-dashed border-slate-600 bg-slate-900"
-                            :class="{ 'border-primary-400 ring-1 ring-primary-400': dragActive[backgroundAssetKey] }"
+                            class="group relative grid aspect-video max-w-[720px] cursor-pointer place-items-center overflow-hidden rounded-xl border-2 border-dashed border-slate-700/60 bg-slate-950/40 transition-all duration-300 hover:border-primary-400/80 hover:bg-slate-950/60"
+                            :class="{ 'border-primary-400 ring-1 ring-primary-400 bg-slate-950/70': dragActive[backgroundAssetKey] }"
                             role="button"
                             tabindex="0"
                             @click="openAssetPicker(backgroundAssetKey)"
@@ -701,18 +701,21 @@ const onBuild = async () => {
                                 v-if="previewUrls[backgroundAssetKey]"
                                 :src="previewUrls[backgroundAssetKey]"
                                 :alt="ASSET_DISPLAY_NAMES[backgroundAssetKey]"
-                                class="h-full w-full object-contain"
+                                class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                             />
-                            <span v-else class="text-xs text-slate-400">No preview</span>
+                            <div v-else class="flex flex-col items-center gap-2 p-4 text-center">
+                                <span class="i-lucide-file-up text-3xl text-slate-500 transition-colors group-hover:text-primary-400" />
+                                <span class="text-xs font-medium text-slate-300">Drag & drop background or click to upload</span>
+                                <span class="text-[10px] text-slate-500">Supports JPG, PNG</span>
+                            </div>
                         </div>
                         <p class="text-xs text-slate-400">
-                            {{ ASSET_SIZING_RULES[backgroundAssetKey].width
-                            }}x{{ ASSET_SIZING_RULES[backgroundAssetKey].height }}
-                            {{ ASSET_SIZING_RULES[backgroundAssetKey].mimeType }}
+                            {{ ASSET_SIZING_RULES[backgroundAssetKey].width }}x{{ ASSET_SIZING_RULES[backgroundAssetKey].height }}
+                            ({{ ASSET_SIZING_RULES[backgroundAssetKey].mimeType.split('/')[1].toUpperCase() }})
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <n-button type="button" leading="i-lucide-file-up"
-                                      @click="openAssetPicker(backgroundAssetKey)">Select
+                            <n-button type="button" leading="i-lucide-file-up" size="sm"
+                                      @click="openAssetPicker(backgroundAssetKey)">Select File
                             </n-button>
                             <input
                                 :ref="(element) => setAssetInputRef(backgroundAssetKey!, element as HTMLInputElement | null)"
@@ -721,7 +724,7 @@ const onBuild = async () => {
                                 accept="image/*"
                                 @change="onAssetSelected(backgroundAssetKey, $event)"
                             />
-                            <n-button btn="soft-error" :disabled="!form.assets[backgroundAssetKey]"
+                            <n-button btn="soft-error" size="sm" :disabled="!form.assets[backgroundAssetKey]"
                                       leading="i-lucide-x-circle" @click="removeAsset(backgroundAssetKey)">Clear
                             </n-button>
                         </div>
@@ -733,22 +736,29 @@ const onBuild = async () => {
                 </div>
 
                 <article
-                    class="grid h-full gap-3 rounded-2xl border border-slate-700/80 bg-slate-900/80 p-4 shadow-xl max-lg:order-3">
+                    class="grid h-full gap-3 rounded-2xl border border-slate-800 bg-slate-900/90 p-4 shadow-xl max-lg:order-3">
                     <h2 class="text-lg font-semibold">Layouts</h2>
                     <div class="grid h-full gap-3">
                         <label class="grid h-full gap-1 text-sm">
                             <span class="text-xs text-slate-400">layout.json</span>
-                            <textarea
-                                v-model="form.layoutJson"
-                                class="min-h-40 h-full rounded-xl border border-slate-700 bg-slate-900 p-2"
-                                placeholder='Paste layout JSON. If set, background image is no longer required.'
-                            />
+                            <div class="relative h-full min-h-40">
+                                <textarea
+                                    v-model="form.layoutJson"
+                                    class="h-full w-full rounded-xl border border-slate-800 bg-slate-950/40 p-3 text-xs font-mono text-slate-300 placeholder-slate-600 focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/50 transition-all duration-200 outline-none resize-none"
+                                    placeholder="Paste layout JSON here. If set, background image is optional."
+                                />
+                                <button
+                                    v-if="form.layoutJson.trim()"
+                                    type="button"
+                                    class="absolute right-2.5 top-2.5 rounded-lg bg-red-950/40 p-1 text-red-400 hover:bg-red-950/80 transition-colors border border-red-900/30"
+                                    @click="clearLayoutJson"
+                                >
+                                    <span class="i-lucide-x text-xs block" />
+                                </button>
+                            </div>
                             <div class="flex flex-wrap gap-2">
-                                <n-button size="sm" type="button" leading="i-lucide-file-up"
+                                <n-button size="sm" type="button" leading="i-lucide-file-up" btn="soft"
                                           @click="onSelectLayoutJson">Select
-                                </n-button>
-                                <n-button btn="soft-error" size="sm" type="button" :disabled="!form.layoutJson.trim()"
-                                          leading="i-lucide-x-circle" @click="clearLayoutJson">Clear
                                 </n-button>
                             </div>
                             <input
@@ -761,21 +771,28 @@ const onBuild = async () => {
                         </label>
 
                         <label class="grid h-full gap-1 text-sm">
-            <span class="flex items-center justify-between gap-2 text-xs text-slate-400">
-                common.json
-              <n-badge badge="outline" size="xs" class="uppercase">optional</n-badge>
-            </span>
-                            <textarea
-                                v-model="form.commonJson"
-                                class="min-h-40 h-full rounded-xl border border-slate-700 bg-slate-900 p-2"
-                                placeholder="Paste common JSON"
-                            />
+                            <span class="flex items-center justify-between gap-2 text-xs text-slate-400">
+                                <span>common.json</span>
+                                <n-badge badge="outline" size="xs" class="uppercase">optional</n-badge>
+                            </span>
+                            <div class="relative h-full min-h-40">
+                                <textarea
+                                    v-model="form.commonJson"
+                                    class="h-full w-full rounded-xl border border-slate-800 bg-slate-950/40 p-3 text-xs font-mono text-slate-300 placeholder-slate-600 focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/50 transition-all duration-200 outline-none resize-none"
+                                    placeholder="Paste common JSON here."
+                                />
+                                <button
+                                    v-if="form.commonJson.trim()"
+                                    type="button"
+                                    class="absolute right-2.5 top-2.5 rounded-lg bg-red-950/40 p-1 text-red-400 hover:bg-red-950/80 transition-colors border border-red-900/30"
+                                    @click="clearCommonJson"
+                                >
+                                    <span class="i-lucide-x text-xs block" />
+                                </button>
+                            </div>
                             <div class="flex flex-wrap gap-2">
-                                <n-button size="sm" type="button" leading="i-lucide-file-up"
+                                <n-button size="sm" type="button" leading="i-lucide-file-up" btn="soft"
                                           @click="onSelectCommonJson">Select
-                                </n-button>
-                                <n-button btn="soft-error" size="sm" type="button" :disabled="!form.commonJson.trim()"
-                                          leading="i-lucide-x-circle" @click="clearCommonJson">Clear
                                 </n-button>
                             </div>
                             <input
@@ -791,23 +808,23 @@ const onBuild = async () => {
             </section>
 
             <section v-if="iconAssetKeys.length > 0"
-                     class="mb-4 grid gap-3 rounded-2xl border border-slate-700/80 bg-slate-900/80 p-4 shadow-xl">
+                     class="mb-4 grid gap-3 rounded-2xl border border-slate-800 bg-slate-900/90 p-4 shadow-xl">
                 <h2 class="text-lg font-semibold">Icons</h2>
                 <p class="text-sm text-slate-300">All icon assets are optional.</p>
-                <div class="grid gap-2 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5">
+                <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5">
                     <article v-for="key in iconAssetKeys" :key="key"
-                             class="grid gap-2 rounded-xl border border-slate-700 bg-slate-900 p-2">
+                             class="group relative flex flex-col gap-3 rounded-2xl border border-slate-800/60 bg-slate-950/20 hover:bg-slate-950/40 transition-all duration-300 p-3 shadow-sm">
                         <div class="flex items-start justify-between gap-2">
-                            <div class="grid gap-0.5">
-                                <strong class="text-sm">{{ ASSET_DISPLAY_NAMES[key] }}</strong>
-                                <span class="text-xs text-slate-400">{{ NXTHEME_ASSET_FILENAMES[key] }}</span>
+                            <div class="grid gap-0.5 min-w-0">
+                                <strong class="text-xs font-semibold text-slate-200 truncate">{{ ASSET_DISPLAY_NAMES[key] }}</strong>
+                                <span class="text-[10px] text-slate-500 font-mono truncate">{{ NXTHEME_ASSET_FILENAMES[key] }}</span>
                             </div>
                             <n-badge badge="outline" size="xs" class="uppercase">optional</n-badge>
                         </div>
 
                         <div
-                            class="grid h-28 w-full cursor-pointer place-items-center overflow-hidden rounded-lg border border-dashed border-slate-600 bg-slate-900"
-                            :class="{ 'border-primary-400 ring-1 ring-primary-400': dragActive[key] }"
+                            class="group/drop relative grid h-24 w-full cursor-pointer place-items-center overflow-hidden rounded-xl border border-dashed border-slate-800 bg-slate-950/30 transition-all duration-300 hover:border-primary-500/60 hover:bg-slate-950/50"
+                            :class="{ 'border-primary-400 ring-1 ring-primary-400 bg-slate-950/60': dragActive[key] }"
                             role="button"
                             tabindex="0"
                             @click="openAssetPicker(key)"
@@ -821,24 +838,27 @@ const onBuild = async () => {
                                 v-if="previewUrls[key]"
                                 :src="previewUrls[key]"
                                 :alt="ASSET_DISPLAY_NAMES[key]"
-                                class="h-auto max-h-[72px] w-auto max-w-[72px] object-contain opacity-85"
+                                class="h-auto max-h-[64px] w-auto max-w-[64px] object-contain transition-transform duration-300 group-hover/drop:scale-105"
                             />
                             <img
                                 v-else-if="ASSET_ICON_PRESETS[key]"
                                 :src="presetIconUrl(key) || undefined"
                                 :alt="ASSET_DISPLAY_NAMES[key]"
-                                class="h-auto w-auto object-contain opacity-70"
+                                class="h-auto w-auto max-h-[56px] max-w-[56px] object-contain opacity-40 transition-opacity duration-300 group-hover/drop:opacity-60"
                             />
-                            <span v-else class="text-xs text-slate-400">No preview</span>
+                            <span v-else class="text-[10px] text-slate-500 text-center">
+                                <span class="i-lucide-file-up text-lg block mx-auto mb-1 text-slate-600 group-hover/drop:text-slate-400" />
+                                No preview
+                            </span>
                         </div>
 
-                        <p class="text-xs text-slate-400">
-                            {{ ASSET_SIZING_RULES[key].width }}x{{ ASSET_SIZING_RULES[key].height }}
-                            {{ ASSET_SIZING_RULES[key].mimeType }}
-                        </p>
+                        <div class="flex items-center justify-between text-[9px] text-slate-500">
+                            <span>{{ ASSET_SIZING_RULES[key].width }}x{{ ASSET_SIZING_RULES[key].height }}</span>
+                            <span class="uppercase font-mono">{{ ASSET_SIZING_RULES[key].mimeType.split('/')[1] }}</span>
+                        </div>
 
-                        <div class="flex flex-wrap gap-2">
-                            <n-button size="sm" type="button" leading="i-lucide-file-up" @click="openAssetPicker(key)">
+                        <div class="flex gap-2">
+                            <n-button size="xs" btn="soft" type="button" class="flex-1 justify-center" @click="openAssetPicker(key)">
                                 Select
                             </n-button>
                             <input
@@ -848,8 +868,8 @@ const onBuild = async () => {
                                 accept="image/*"
                                 @change="onAssetSelected(key, $event)"
                             />
-                            <n-button size="sm" btn="soft-error" :disabled="!form.assets[key]"
-                                      leading="i-lucide-x-circle" @click="removeAsset(key)">Clear
+                            <n-button size="xs" btn="soft-error" :disabled="!form.assets[key]"
+                                      leading="i-lucide-x" class="px-2" @click="removeAsset(key)">
                             </n-button>
                         </div>
                     </article>
@@ -870,7 +890,7 @@ const onBuild = async () => {
                         ({{ ASSET_SIZING_RULES[cropAssetKey].width }}x{{ ASSET_SIZING_RULES[cropAssetKey].height }})
                         from {{ cropFileName }}
                     </p>
-                    <div class="rounded-lg bg-slate-800 p-4">
+                    <div class="rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
                         <div
                             v-if="cropEditorMetrics"
                             class="relative mx-auto w-full overflow-hidden select-none touch-none"
@@ -889,12 +909,12 @@ const onBuild = async () => {
                                 class="absolute cursor-move rounded border-2 border-primary-400 bg-primary-400/10"
                                 :class="{ 'ring-2 ring-primary-300': cropDrag.active }"
                                 :style="{
-              left: `${cropEditorMetrics.frameLeft}px`,
-              top: `${cropEditorMetrics.frameTop}px`,
-              width: `${cropEditorMetrics.frameWidth}px`,
-              height: `${cropEditorMetrics.frameHeight}px`,
-              boxShadow: '0 0 0 9999px rgba(2, 6, 23, 0.55)',
-            }"
+                                    left: `${cropEditorMetrics.frameLeft}px`,
+                                    top: `${cropEditorMetrics.frameTop}px`,
+                                    width: `${cropEditorMetrics.frameWidth}px`,
+                                    height: `${cropEditorMetrics.frameHeight}px`,
+                                    boxShadow: '0 0 0 9999px rgba(2, 6, 23, 0.55)',
+                                }"
                                 @pointerdown.prevent="startCropDrag"
                                 @pointermove.prevent="onCropDragMove"
                                 @pointerup="stopCropDrag"
@@ -912,7 +932,7 @@ const onBuild = async () => {
                         <input v-model.number="cropState.zoom" class="w-full" type="range" :min="cropState.minZoom"
                                max="4" step="0.01" />
                     </label>
-                    <div class="flex justify-center rounded-lg bg-slate-800 p-4">
+                    <div class="flex justify-center rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
                         <canvas ref="cropCanvas" class="max-w-[420px]" />
                     </div>
                     <div class="flex flex-wrap gap-2">
@@ -922,14 +942,13 @@ const onBuild = async () => {
                 </div>
             </n-dialog>
 
-            <section class="grid gap-2 rounded-2xl border border-slate-700/80 bg-slate-900/80 p-4 shadow-xl">
+            <section class="grid gap-2 rounded-2xl border border-slate-800 bg-slate-900/90 p-4 shadow-xl">
                 <div class="flex flex-wrap justify-center gap-2">
                     <n-button :disabled="loading" :leading="loading ? 'i-lucide-loader-circle' : 'i-lucide-download'"
-                              @click="onBuild">
+                               @click="onBuild">
                         {{ loading ? "Building..." : "Build and Download .nxtheme" }}
                     </n-button>
-                    <n-button btn="soft" :disabled="loading" leading="i-lucide-file-up" @click="onImportClick">Import
-                        .nxtheme
+                    <n-button btn="soft" :disabled="loading" leading="i-lucide-file-up" @click="onImportClick">Import .nxtheme
                     </n-button>
                     <n-button btn="solid-error" :disabled="loading" leading="i-lucide-rotate-ccw" @click="onReset">
                         Reset
