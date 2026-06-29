@@ -594,7 +594,6 @@ const onBuild = async () => {
                 class="mb-4 flex flex-col gap-3 rounded-2xl border border-slate-700/80 bg-slate-900/80 p-4 shadow-xl lg:flex-row lg:items-start lg:justify-between">
                 <div class="grid gap-2">
                     <div class="flex items-center gap-2 text-2xl leading-none">
-                        <n-icon name="i-lucide-sparkles" class="text-slate-200" />
                         <h1 class="text-2xl font-black">NXTheme Builder</h1>
                     </div>
                     <p class="text-sm text-slate-300">
