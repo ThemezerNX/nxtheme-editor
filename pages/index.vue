@@ -603,6 +603,14 @@ const onBuild = async () => {
                     </p>
                 </div>
                 <div class="flex flex-wrap items-center content-start gap-2 self-start">
+                  <a
+                      class="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-slate-900 px-3 py-2 text-sm font-semibold text-slate-100"
+                      href="https://github.com/ThemezerNX/nxtheme-editor"
+                      target="_blank"
+                  >
+                    <span class="i-lucide-github shrink-0 text-[1em] leading-none" />
+                    <span>Source code</span>
+                  </a>
                     <a
                         class="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-slate-900 px-3 py-2 text-sm font-semibold text-slate-100"
                         href="https://themezer.net"
