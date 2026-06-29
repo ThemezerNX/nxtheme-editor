@@ -714,8 +714,8 @@ const onBuild = async () => {
                             ({{ ASSET_SIZING_RULES[backgroundAssetKey].mimeType.split('/')[1].toUpperCase() }})
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <n-button type="button" leading="i-lucide-file-up" size="sm"
-                                      @click="openAssetPicker(backgroundAssetKey)">Select File
+                            <n-button type="button" btn="soft"  leading="i-lucide-file-up" size="sm"
+                                      @click="openAssetPicker(backgroundAssetKey)">Select
                             </n-button>
                             <input
                                 :ref="(element) => setAssetInputRef(backgroundAssetKey!, element as HTMLInputElement | null)"
@@ -858,7 +858,7 @@ const onBuild = async () => {
                         </div>
 
                         <div class="flex gap-2">
-                            <n-button size="xs" btn="soft" type="button" class="flex-1 justify-center" @click="openAssetPicker(key)">
+                            <n-button leading="i-lucide-file-up" size="xs" btn="soft" type="button" class="flex-1 justify-center" @click="openAssetPicker(key)">
                                 Select
                             </n-button>
                             <input
@@ -868,7 +868,7 @@ const onBuild = async () => {
                                 accept="image/*"
                                 @change="onAssetSelected(key, $event)"
                             />
-                            <n-button size="xs" btn="soft-error" :disabled="!form.assets[key]"
+                            <n-button icon size="xs" btn="soft-error" :disabled="!form.assets[key]"
                                       leading="i-lucide-x" class="px-2" @click="removeAsset(key)">
                             </n-button>
                         </div>
