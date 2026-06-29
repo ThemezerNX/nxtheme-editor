@@ -279,6 +279,9 @@ watch(
                 clearPreview(key)
             }
         }
+        if (target !== "ResidentMenu") {
+            form.value.commonJson = ""
+        }
     },
 )
 
@@ -736,12 +739,12 @@ const onBuild = async () => {
                 </div>
 
                 <article
-                    class="grid h-full gap-3 rounded-2xl border border-slate-800 bg-slate-900/90 p-4 shadow-xl max-lg:order-3">
+                    class="flex flex-col h-full gap-3 rounded-2xl border border-slate-800 bg-slate-900/90 p-4 shadow-xl max-lg:order-3">
                     <h2 class="text-lg font-semibold">Layouts</h2>
-                    <div class="grid h-full gap-3">
-                        <label class="grid h-full gap-1 text-sm">
+                    <div class="flex flex-col gap-3 flex-grow min-h-0">
+                        <label class="flex flex-col gap-1 text-sm flex-1 min-h-0">
                             <span class="text-xs text-slate-400">layout.json</span>
-                            <div class="relative h-full min-h-40">
+                            <div class="relative flex-grow min-h-40">
                                 <textarea
                                     v-model="form.layoutJson"
                                     class="h-full w-full rounded-xl border border-slate-800 bg-slate-950/40 p-3 text-xs font-mono text-slate-300 placeholder-slate-600 focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/50 transition-all duration-200 outline-none resize-none"
@@ -770,12 +773,12 @@ const onBuild = async () => {
                             />
                         </label>
 
-                        <label class="grid h-full gap-1 text-sm">
+                        <label v-if="form.target === 'ResidentMenu'" class="flex flex-col gap-1 text-sm flex-1 min-h-0">
                             <span class="flex items-center justify-between gap-2 text-xs text-slate-400">
                                 <span>common.json</span>
                                 <n-badge badge="outline" size="xs" class="uppercase">optional</n-badge>
                             </span>
-                            <div class="relative h-full min-h-40">
+                            <div class="relative flex-grow min-h-40">
                                 <textarea
                                     v-model="form.commonJson"
                                     class="h-full w-full rounded-xl border border-slate-800 bg-slate-950/40 p-3 text-xs font-mono text-slate-300 placeholder-slate-600 focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/50 transition-all duration-200 outline-none resize-none"
