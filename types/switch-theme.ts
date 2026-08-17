@@ -2,6 +2,7 @@ import {
   type NxthemeAssetKey,
   type NxthemeTargetName,
   NXTHEME_ASSET_FILENAMES,
+  NXTHEME_ASSET_KEYS,
   NXTHEME_ASSET_KEYS_BY_TARGET,
 } from "@themezernx/nxtheme-builder"
 
@@ -91,7 +92,7 @@ export const ASSET_ICON_PRESETS: Partial<Record<NxthemeAssetKey, string>> = {
   homeIcon: "applets/home.png",
 }
 
-export const NXTHEME_ASSET_KEYS = Object.keys(NXTHEME_ASSET_FILENAMES) as NxthemeAssetKey[]
+export { NXTHEME_ASSET_KEYS }
 
 export const getAllowedAssetKeysByTarget = (target: SwitchThemeTarget): NxthemeAssetKey[] => {
   const allowed = new Set<NxthemeAssetKey>([

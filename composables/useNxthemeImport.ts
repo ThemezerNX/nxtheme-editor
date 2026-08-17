@@ -1,5 +1,6 @@
 import {
-  parseNxthemeSarc,
+  getNxthemeImportedAuthor,
+  parseNxthemeArchive,
   NXTHEME_ASSET_FILENAMES,
   type NxthemeAssetKey,
 } from "@themezernx/nxtheme-builder"
@@ -32,9 +33,9 @@ export const useNxthemeImport = () => {
     file: File,
     currentForm: SwitchThemeFormData,
   ): Promise<{ nextForm: SwitchThemeFormData; warning?: string }> => {
-    const parsed = parseNxthemeSarc(new Uint8Array(await file.arrayBuffer()))
+    const parsed = parseNxthemeArchive(new Uint8Array(await file.arrayBuffer()))
     if (!parsed.info) {
-      throw new Error("Invalid NXTheme: missing manifest.json")
+      throw new Error("Invalid NXTheme: missing info.json")
     }
 
     const assets: ThemeAssets = {}
@@ -54,7 +55,7 @@ export const useNxthemeImport = () => {
       nextForm: {
         ...currentForm,
         name: parsed.info.ThemeName || currentForm.name,
-        author: parsed.info.Author || currentForm.author,
+        author: getNxthemeImportedAuthor(parsed.info) ?? parsed.info.Author ?? currentForm.author,
         target,
         layoutJson: parsed.layoutJson || "",
         commonJson: parsed.commonJson || "",

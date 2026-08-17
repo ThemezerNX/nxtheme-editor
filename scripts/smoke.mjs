@@ -1,13 +1,13 @@
-import { buildNxthemeSarc, parseNxthemeSarc } from "@themezernx/nxtheme-builder"
+import { buildNxthemeArchive, parseNxthemeArchive } from "@themezernx/nxtheme-builder"
 
-const built = buildNxthemeSarc({
+const built = buildNxthemeArchive({
   name: "Smoke Theme",
   author: "Smoke Test",
   targetThemeValue: "ResidentMenu",
   assets: {},
 })
 
-const parsed = parseNxthemeSarc(built)
+const parsed = parseNxthemeArchive(built)
 
 if (!parsed.info) {
   throw new Error("Smoke test failed: missing manifest info")

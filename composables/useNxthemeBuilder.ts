@@ -1,6 +1,7 @@
 import {
-  buildNxthemeSarc,
-  getNxthemeFilename,
+  buildNxthemeArchive,
+  getNxthemeCreatorFilename,
+  getNxthemeLayoutInfo,
   type NxthemeAssetKey,
 } from "@themezernx/nxtheme-builder"
 import type { SwitchThemeFormData } from "~/types/switch-theme"
@@ -29,7 +30,7 @@ export const useNxthemeBuilder = () => {
       preparedAssets[key] = await fileToBytes(value)
     }
 
-    const buffer = buildNxthemeSarc({
+    const buffer = buildNxthemeArchive({
       name: formData.name.trim(),
       author: formData.author.trim(),
       targetThemeValue: formData.target,
@@ -38,11 +39,11 @@ export const useNxthemeBuilder = () => {
       assets: preparedAssets,
     })
 
-    const filename = getNxthemeFilename({
-      themeName: formData.name.trim(),
-      authorName: formData.author.trim(),
+    const filename = getNxthemeCreatorFilename({
+      name: formData.name.trim(),
+      author: formData.author.trim(),
       targetName: formData.target,
-      themeHexId: "local",
+      layoutInfo: getNxthemeLayoutInfo(formData.layoutJson.trim()),
     })
 
     const blob = new Blob([bytesToArrayBuffer(buffer)], { type: "application/octet-stream" })
