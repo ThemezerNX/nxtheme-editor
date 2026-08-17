@@ -630,6 +630,9 @@ const onBuild = async () => {
                         <span class="i-lucide-github shrink-0 text-[1em] leading-none" />
                         <span>NXThemesInjector</span>
                     </a>
+                    <n-button btn="soft" :disabled="loading" leading="i-lucide-file-up" @click="onImportClick">
+                      Import .nxtheme
+                    </n-button>
                 </div>
             </header>
 
@@ -950,8 +953,6 @@ const onBuild = async () => {
                     <n-button :disabled="loading" :leading="loading ? 'i-lucide-loader-circle' : 'i-lucide-download'"
                                @click="onBuild">
                         {{ loading ? "Building..." : "Build and Download .nxtheme" }}
-                    </n-button>
-                    <n-button btn="soft" :disabled="loading" leading="i-lucide-file-up" @click="onImportClick">Import .nxtheme
                     </n-button>
                     <n-button btn="solid-error" :disabled="loading" leading="i-lucide-rotate-ccw" @click="onReset">
                         Reset
