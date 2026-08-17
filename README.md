@@ -15,7 +15,7 @@ This editor is built using **Nuxt 4**, **Una UI**, **UnoCSS**, and is powered by
 
 ### Prerequisites
 
-Make sure you have Node.js (version 24.x) and `pnpm` installed on your machine.
+Make sure you have [Bun](https://bun.sh) installed on your machine.
 
 ### Installation
 
@@ -23,7 +23,7 @@ Clone the repository and install the dependencies:
 
 ```bash
 git clone https://github.com/ThemezerNX/nxtheme-editor
-pnpm install
+bun install
 ```
 
 ### Development Server
@@ -31,7 +31,7 @@ pnpm install
 Start the local development server with hot module replacement (HMR):
 
 ```bash
-pnpm start:dev
+bun run start:dev
 ```
 
 Open your browser and navigate to the local URL (usually `http://localhost:3000`).
@@ -41,13 +41,13 @@ Open your browser and navigate to the local URL (usually `http://localhost:3000`
 To compile a highly optimized production bundle:
 
 ```bash
-pnpm run build
+bun run build
 ```
 
 To preview the built production app locally:
 
 ```bash
-pnpm run start
+bun run start
 ```
 
 ## License
