@@ -1,39 +1,56 @@
 import {
   type NxthemeAssetKey,
-  type NxthemeTargetName,
-  NXTHEME_ASSET_FILENAMES,
   NXTHEME_ASSET_KEYS,
-  NXTHEME_ASSET_KEYS_BY_TARGET,
 } from "@themezernx/nxtheme-builder"
+import { isTheme, toTheme } from "@themezernx/target-parser"
 
-export type SwitchThemeTarget = NxthemeTargetName
+export type NxthemeInfoTarget =
+  | "home"
+  | "lock"
+  | "apps"
+  | "set"
+  | "news"
+  | "user"
+  | "psl"
 
-export const SWITCH_TARGETS: SwitchThemeTarget[] = [
-  "ResidentMenu",
-  "Entrance",
-  "Flaunch",
-  "Set",
-  "Notification",
-  "MyPage",
-  "Psl",
-]
+export const INFO_TARGETS: readonly NxthemeInfoTarget[] = [
+  "home",
+  "lock",
+  "apps",
+  "set",
+  "news",
+  "user",
+  "psl",
+] as const
 
-export const TARGET_LABELS: Record<SwitchThemeTarget, { title: string; icon: string }> = {
-  ResidentMenu: { title: "Home Menu", icon: "i-mdi-home" },
-  Entrance: { title: "Lockscreen", icon: "i-mdi-lock" },
-  Flaunch: { title: "All Apps", icon: "i-mdi-apps" },
-  Set: { title: "Settings", icon: "i-mdi-cog" },
-  Notification: { title: "News", icon: "i-mdi-newspaper-variant" },
-  MyPage: { title: "User Page", icon: "i-mdi-account" },
-  Psl: { title: "Player Selection", icon: "i-mdi-account-multiple" },
+export const INFO_TARGET_LABELS: Record<NxthemeInfoTarget, { title: string; icon: string }> = {
+  home: { title: "Home Menu", icon: "i-mdi-home" },
+  lock: { title: "Lockscreen", icon: "i-mdi-lock" },
+  apps: { title: "All Apps", icon: "i-mdi-apps" },
+  set: { title: "Settings", icon: "i-mdi-cog" },
+  news: { title: "News", icon: "i-mdi-newspaper-variant" },
+  user: { title: "User Page", icon: "i-mdi-account" },
+  psl: { title: "Player Selection", icon: "i-mdi-account-multiple" },
 }
 
+export const normalizeToInfoTarget = (value: string | null | undefined): NxthemeInfoTarget | null => {
+  if (!value) return null
+  const trimmed = value.trim()
+  if (isTheme(trimmed)) {
+    return trimmed as NxthemeInfoTarget
+  }
+  const converted = toTheme(trimmed)
+  if (converted && isTheme(converted)) {
+    return converted as NxthemeInfoTarget
+  }
+  return null
+}
 export type ThemeAssets = Partial<Record<NxthemeAssetKey, File | null>>
 
 export type SwitchThemeFormData = {
   name: string
   author: string
-  target: SwitchThemeTarget
+  target: NxthemeInfoTarget
   layoutJson: string
   commonJson: string
   assets: ThemeAssets
@@ -92,11 +109,19 @@ export const ASSET_ICON_PRESETS: Partial<Record<NxthemeAssetKey, string>> = {
   homeIcon: "applets/home.png",
 }
 
-export { NXTHEME_ASSET_KEYS }
+const INFO_TARGET_ALLOWED_ICONS: Record<NxthemeInfoTarget, NxthemeAssetKey[]> = {
+  home: ["nsoIcon", "newsIcon", "shopIcon", "albumIcon", "shareIcon", "controllerIcon", "cardIcon", "settingsIcon", "powerIcon"],
+  lock: ["homeIcon"],
+  apps: [],
+  set: [],
+  news: [],
+  user: [],
+  psl: [],
+}
 
-export const getAllowedAssetKeysByTarget = (target: SwitchThemeTarget): NxthemeAssetKey[] => {
+export const getAllowedAssetKeysByTarget = (infoTarget: NxthemeInfoTarget): NxthemeAssetKey[] => {
   const allowed = new Set<NxthemeAssetKey>([
-    ...NXTHEME_ASSET_KEYS_BY_TARGET[target],
+    ...(INFO_TARGET_ALLOWED_ICONS[infoTarget] || []),
     "backgroundImage",
   ])
   return NXTHEME_ASSET_KEYS.filter((key) => allowed.has(key))

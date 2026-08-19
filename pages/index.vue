@@ -7,15 +7,15 @@ import {
     ASSET_ICON_PRESETS,
     ASSET_SIZING_RULES,
     getAllowedAssetKeysByTarget,
-    SWITCH_TARGETS,
+    INFO_TARGETS,
+    INFO_TARGET_LABELS,
     type SwitchThemeFormData,
-    TARGET_LABELS,
 } from "~/types/switch-theme"
 
 const createInitialForm = (): SwitchThemeFormData => ({
     name: "",
     author: "",
-    target: "ResidentMenu",
+    target: "home",
     layoutJson: "",
     commonJson: "",
     assets: {},
@@ -279,7 +279,7 @@ watch(
                 clearPreview(key)
             }
         }
-        if (target !== "ResidentMenu") {
+        if (target !== "home") {
             form.value.commonJson = ""
         }
     },
@@ -674,13 +674,13 @@ const onBuild = async () => {
                     <n-tabs-list
                         class="!grid !h-auto !w-full !gap-1 !rounded-xl !border !border-slate-850 !bg-slate-950/60 !p-1 sm:!grid-cols-2 lg:!grid-cols-4 xl:!grid-cols-7">
                         <n-tabs-trigger
-                            v-for="target in SWITCH_TARGETS"
+                            v-for="target in INFO_TARGETS"
                             :key="target"
                             :value="target"
                             class="!h-9 !min-w-0 !justify-center !gap-1.5 !rounded-lg !border-0 !bg-transparent !px-2 !py-1 !text-xs !text-slate-300 !shadow-none !ring-0 hover:!bg-slate-800/50 data-[state=active]:!bg-primary/25 data-[state=active]:!text-primary-200 sm:!text-sm"
                         >
-                            <span :class="[TARGET_LABELS[target].icon, 'shrink-0 text-sm leading-none']" />
-                            <span class="min-w-0 truncate font-semibold">{{ TARGET_LABELS[target].title }}</span>
+                            <span :class="[INFO_TARGET_LABELS[target].icon, 'shrink-0 text-sm leading-none']" />
+                            <span class="min-w-0 truncate font-semibold">{{ INFO_TARGET_LABELS[target].title }}</span>
                         </n-tabs-trigger>
                     </n-tabs-list>
                 </n-tabs>
@@ -776,7 +776,7 @@ const onBuild = async () => {
                             />
                         </label>
 
-                        <label v-if="form.target === 'ResidentMenu'" class="flex flex-col gap-1 text-sm flex-1 min-h-0">
+                        <label v-if="form.target === 'home'" class="flex flex-col gap-1 text-sm flex-1 min-h-0">
                             <span class="flex items-center justify-between gap-2 text-xs text-slate-400">
                                 <span>common.json</span>
                                 <n-badge badge="outline" size="xs" class="uppercase">optional</n-badge>

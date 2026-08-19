@@ -4,18 +4,7 @@ import {
   NXTHEME_ASSET_FILENAMES,
   type NxthemeAssetKey,
 } from "@themezernx/nxtheme-builder"
-import type { SwitchThemeFormData, SwitchThemeTarget, ThemeAssets } from "~/types/switch-theme"
-
-const validTargets: SwitchThemeTarget[] = [
-  "ResidentMenu",
-  "Entrance",
-  "Flaunch",
-  "Set",
-  "Notification",
-  "MyPage",
-  "Psl",
-]
-
+import { normalizeToInfoTarget, type SwitchThemeFormData, type ThemeAssets } from "~/types/switch-theme"
 const bytesToArrayBuffer = (bytes: Uint8Array): ArrayBuffer => {
     const out = new Uint8Array(bytes.byteLength)
     out.set(bytes)
@@ -43,10 +32,10 @@ export const useNxthemeImport = () => {
       assets[key] = toAssetFile(key, value)
     }
 
-    const target = validTargets.includes(parsed.info.Target as SwitchThemeTarget)
-      ? (parsed.info.Target as SwitchThemeTarget)
-      : currentForm.target
-
+    const infoTarget = normalizeToInfoTarget(parsed.info.Target)
+    if (!infoTarget) {
+      throw new Error(`Invalid or unsupported theme target in info.json: '${parsed.info.Target}'`)
+    }
     const warning = parsed.unsupportedFiles.length > 0
       ? `Ignored unsupported files: ${parsed.unsupportedFiles.join(", ")}`
       : undefined
@@ -56,7 +45,7 @@ export const useNxthemeImport = () => {
         ...currentForm,
         name: parsed.info.ThemeName || currentForm.name,
         author: getNxthemeImportedAuthor(parsed.info) ?? parsed.info.Author ?? currentForm.author,
-        target,
+        target: infoTarget,
         layoutJson: parsed.layoutJson || "",
         commonJson: parsed.commonJson || "",
         assets: {

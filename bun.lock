@@ -8,6 +8,7 @@
         "@nuxt/icon": "2.2.1",
         "@nuxtjs/color-mode": "^3.5.2",
         "@themezernx/nxtheme-builder": "^2.0.0",
+        "@themezernx/target-parser": "^1.0.5",
         "@una-ui/nuxt": "^0.64.0",
         "@una-ui/preset": "^0.64.0",
         "@vee-validate/nuxt": "^4.15.1",
@@ -501,6 +502,8 @@
     "@themezernx/nxtheme-builder": ["@themezernx/nxtheme-builder@2.0.0", "", { "dependencies": { "@themezernx/sarclib": "^2.0.1", "fflate": "^0.8.2" } }, "sha512-pp+ib2wwIIPTTgZA2ODDmmTJi3iV0NpIXEWaiWFz6zd2a2LI2NaJMsQHytv2C/2QYYECm8vwyZiu8Yek0WaebQ=="],
 
     "@themezernx/sarclib": ["@themezernx/sarclib@2.0.1", "", {}, "sha512-E/RggxaoqK1os3jAQeP6Z7PC0qSSKEQOimqeVGGJrb4CMRj9EeN06zPSLO8N9JQO/eYdJko0ZRhwLh7vfGrbYw=="],
+
+    "@themezernx/target-parser": ["@themezernx/target-parser@1.0.5", "", {}, "sha512-QkABjbyk175o3aoXnKtAyMdLePfZfi5mbmmWoso0qYGSN8HWSpGGIhBx2QS1qO0UNr+5E6D4qyhq4TA79MhLnQ=="],
 
     "@tybys/wasm-util": ["@tybys/wasm-util@0.10.3", "", { "dependencies": { "tslib": "2.8.1" } }, "sha512-F3fo1MYrRJYL3zER0OUOmkutjr1Vp23m7OsSgp7nq4SP6OqX6C/56XFIPAl5bt3zaBRjmW7SGz3u/6LwFpYcOg=="],
 

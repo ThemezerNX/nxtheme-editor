@@ -4,7 +4,8 @@ import {
   getNxthemeLayoutInfo,
   type NxthemeAssetKey,
 } from "@themezernx/nxtheme-builder"
-import type { SwitchThemeFormData } from "~/types/switch-theme"
+import { toNice } from "@themezernx/target-parser"
+import { normalizeToInfoTarget, type SwitchThemeFormData } from "~/types/switch-theme"
 
 const fileToBytes = async (file: File): Promise<Uint8Array> => {
   return new Uint8Array(await file.arrayBuffer())
@@ -24,6 +25,10 @@ export const useNxthemeBuilder = () => {
       throw new Error("Provide a background image or a layout JSON file.")
     }
 
+    const infoTarget = normalizeToInfoTarget(formData.target)
+    if (!infoTarget) {
+      throw new Error(`Invalid theme target: ${formData.target}`)
+    }
     const preparedAssets: Partial<Record<NxthemeAssetKey, Uint8Array>> = {}
     for (const [key, value] of Object.entries(formData.assets) as [NxthemeAssetKey, File | null][]) {
       if (!value) continue
@@ -33,7 +38,7 @@ export const useNxthemeBuilder = () => {
     const buffer = buildNxthemeArchive({
       name: formData.name.trim(),
       author: formData.author.trim(),
-      targetThemeValue: formData.target,
+      targetThemeValue: infoTarget,
       layoutJson: formData.layoutJson.trim() || undefined,
       commonJson: formData.commonJson.trim() || undefined,
       assets: preparedAssets,
@@ -42,7 +47,7 @@ export const useNxthemeBuilder = () => {
     const filename = getNxthemeCreatorFilename({
       name: formData.name.trim(),
       author: formData.author.trim(),
-      targetName: formData.target,
+      targetName: toNice(infoTarget) ?? infoTarget,
       layoutInfo: getNxthemeLayoutInfo(formData.layoutJson.trim()),
     })
 
