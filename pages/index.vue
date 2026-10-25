@@ -6,6 +6,7 @@ import {
     ASSET_DISPLAY_NAMES,
     ASSET_ICON_PRESETS,
     ASSET_SIZING_RULES,
+    createThemeId,
     getAllowedAssetKeysByTarget,
     INFO_TARGETS,
     INFO_TARGET_LABELS,
@@ -13,6 +14,7 @@ import {
 } from "~/types/switch-theme"
 
 const createInitialForm = (): SwitchThemeFormData => ({
+    id: createThemeId(),
     name: "",
     author: "",
     target: "home",

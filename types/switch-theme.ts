@@ -45,9 +45,17 @@ export const normalizeToInfoTarget = (value: string | null | undefined): Nxtheme
   }
   return null
 }
+
+/** A new theme's info.json `Id`: 8 random hex characters, like the ones NxThemeTool gives a new theme. */
+export const createThemeId = (): string => crypto.randomUUID().slice(0, 8)
+
+/** The `Id` an imported theme keeps: its own, unless it has none or it is a Themezer download's, which an edited copy no longer is. */
+export const importedThemeId = (id: string | undefined): string => (id && !id.startsWith("Themezer:") ? id : createThemeId())
+
 export type ThemeAssets = Partial<Record<NxthemeAssetKey, File | null>>
 
 export type SwitchThemeFormData = {
+  id: string
   name: string
   author: string
   target: NxthemeInfoTarget

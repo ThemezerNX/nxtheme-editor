@@ -2,6 +2,8 @@ import { buildNxthemeArchive, parseNxthemeArchive } from "@themezernx/nxtheme-bu
 
 import { isTheme, toTheme } from "@themezernx/target-parser"
 
+import { createThemeId, importedThemeId } from "../types/switch-theme.ts"
+
 const normalizeToInfoTarget = (value) => {
   if (!value) return null
   const trimmed = String(value).trim()
@@ -44,10 +46,30 @@ const built = buildNxthemeArchive({
   name: "Smoke Theme",
   author: "Smoke Test",
   targetThemeValue: "home",
+  id: "a1b2c3d4",
   assets: {},
 })
 
 const parsed = parseNxthemeArchive(built)
+
+if (parsed.info?.Id !== "a1b2c3d4") {
+  throw new Error(`Smoke test failed: unexpected Id '${parsed.info?.Id}'`)
+}
+
+if (!/^[0-9a-f]{8}$/.test(createThemeId())) {
+  throw new Error("Smoke test failed: a new theme's Id is not 8 hex characters")
+}
+
+if (importedThemeId("a1b2c3d4") !== "a1b2c3d4") {
+  throw new Error("Smoke test failed: an imported Id was not kept")
+}
+
+for (const imported of [undefined, "", "Themezer:1E93D:1761429434123"]) {
+  const id = importedThemeId(imported)
+  if (!/^[0-9a-f]{8}$/.test(id)) {
+    throw new Error(`Smoke test failed: imported Id '${imported}' became '${id}' instead of a new one`)
+  }
+}
 
 if (!parsed.info) {
   throw new Error("Smoke test failed: missing manifest info")
@@ -65,5 +87,5 @@ if (parsed.info.Target !== "home") {
   throw new Error(`Smoke test failed: unexpected Target '${parsed.info.Target}'`)
 }
 
-console.log("Smoke test passed: build + parse round trip with canonical info target works.")
+console.log("Smoke test passed: build + parse round trip with canonical info target and Id works.")
 

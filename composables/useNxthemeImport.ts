@@ -4,7 +4,7 @@ import {
   NXTHEME_ASSET_FILENAMES,
   type NxthemeAssetKey,
 } from "@themezernx/nxtheme-builder"
-import { normalizeToInfoTarget, type SwitchThemeFormData, type ThemeAssets } from "~/types/switch-theme"
+import { importedThemeId, normalizeToInfoTarget, type SwitchThemeFormData, type ThemeAssets } from "~/types/switch-theme"
 const bytesToArrayBuffer = (bytes: Uint8Array): ArrayBuffer => {
     const out = new Uint8Array(bytes.byteLength)
     out.set(bytes)
@@ -43,6 +43,7 @@ export const useNxthemeImport = () => {
     return {
       nextForm: {
         ...currentForm,
+        id: importedThemeId(parsed.info.Id),
         name: parsed.info.ThemeName || currentForm.name,
         author: getNxthemeImportedAuthor(parsed.info) ?? parsed.info.Author ?? currentForm.author,
         target: infoTarget,

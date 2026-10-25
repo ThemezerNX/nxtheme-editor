@@ -41,6 +41,7 @@ export const useNxthemeBuilder = () => {
       targetThemeValue: infoTarget,
       layoutJson: formData.layoutJson.trim() || undefined,
       commonJson: formData.commonJson.trim() || undefined,
+      id: formData.id,
       assets: preparedAssets,
     })
 

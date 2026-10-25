@@ -7,7 +7,7 @@
       "dependencies": {
         "@nuxt/icon": "2.2.1",
         "@nuxtjs/color-mode": "^3.5.2",
-        "@themezernx/nxtheme-builder": "^2.0.0",
+        "@themezernx/nxtheme-builder": "^2.1.0",
         "@themezernx/target-parser": "^1.0.5",
         "@una-ui/nuxt": "^0.64.0",
         "@una-ui/preset": "^0.64.0",
@@ -499,7 +499,7 @@
 
     "@tanstack/vue-virtual": ["@tanstack/vue-virtual@3.13.30", "", { "dependencies": { "@tanstack/virtual-core": "3.17.2" }, "peerDependencies": { "vue": "3.5.39" } }, "sha512-5IpTZf5US81z9CHaRm2imVC44WDU1V/pd8mN1OIvIerRmo6C179UN+vnzlO/dx9Fpt9X7Rjl7fyvolPhPgtfqg=="],
 
-    "@themezernx/nxtheme-builder": ["@themezernx/nxtheme-builder@2.0.0", "", { "dependencies": { "@themezernx/sarclib": "^2.0.1", "fflate": "^0.8.2" } }, "sha512-pp+ib2wwIIPTTgZA2ODDmmTJi3iV0NpIXEWaiWFz6zd2a2LI2NaJMsQHytv2C/2QYYECm8vwyZiu8Yek0WaebQ=="],
+    "@themezernx/nxtheme-builder": ["@themezernx/nxtheme-builder@2.1.0", "", { "dependencies": { "@themezernx/sarclib": "^2.0.1", "fflate": "^0.8.2" } }, "sha512-jGLFgyZxKsHBGbD450Eubv4AkXaqDf9JMJcU3J7uYYi+oWRSyz09PQsyY2B1cF066/PFy7emRM3b2r1eshxtug=="],
 
     "@themezernx/sarclib": ["@themezernx/sarclib@2.0.1", "", {}, "sha512-E/RggxaoqK1os3jAQeP6Z7PC0qSSKEQOimqeVGGJrb4CMRj9EeN06zPSLO8N9JQO/eYdJko0ZRhwLh7vfGrbYw=="],
 
