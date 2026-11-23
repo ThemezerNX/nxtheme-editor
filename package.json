@@ -22,16 +22,16 @@
     "@una-ui/preset": "^0.64.0",
     "@vee-validate/nuxt": "^4.15.1",
     "@vueuse/nuxt": "^12.8.2",
-    "nuxt": "^4.4.4",
-    "reka-ui": "^2.9.2",
-    "vue": "^3.5.34"
+    "nuxt": "~4.4.8",
+    "reka-ui": "~2.10.5",
+    "vue": "^3.5.46"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.98",
+    "@iconify-json/lucide": "^1.2.158",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/radix-icons": "^1.2.6",
-    "@iconify-json/simple-icons": "^1.2.74",
-    "@iconify-json/tabler": "^1.2.31",
+    "@iconify-json/simple-icons": "^1.2.103",
+    "@iconify-json/tabler": "^1.2.46",
     "@unocss/nuxt": "66.6.6",
     "@unocss/preset-attributify": "66.6.6",
     "@unocss/transformer-variant-group": "66.6.6",
